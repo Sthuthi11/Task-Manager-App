@@ -1,6 +1,7 @@
 A Simple Task Manager App created in Android Studio (Java)
 
 Structure:-
+
  1] Classes:
   - MainActivity.java : Handles main screen(Login)
   - TasksActivity.java : Creation of tasks
