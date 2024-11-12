@@ -3,6 +3,7 @@ package com.example.taskmanager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         loginb = findViewById(R.id.loginb);
+        registerb = findViewById(R.id.registerb);
         mAuth = FirebaseAuth.getInstance();
 
         loginb.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +50,39 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 signInWithFirebase(emailid, pass);
+            }
+        });
+        registerb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerUser();
+            }
+        });
+    }
+    private void registerUser() {
+        String emailid = email.getText().toString().trim();
+        String pass = password.getText().toString().trim();
+        if (TextUtils.isEmpty(emailid)) {
+            email.setError("Email required");
+            return;
+        }
+        if (TextUtils.isEmpty(pass)) {
+            password.setError("Password required");
+            return;
+        }
+        if (pass.length() < 6) {
+            password.setError("Password must be atleast 6 characters");
+            return;
+        }
+        mAuth.createUserWithEmailAndPassword(emailid, pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Toast.makeText(MainActivity.this, "Registration successful: " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
