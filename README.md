@@ -1,9 +1,15 @@
 A Simple Task Manager App created in Android Studio (Java)
 
+Working:-
+- New users can register and then login to the app
+- The tasks along with their decription and date have to be added
+- These tasks will be sorted based on date and displayed as a list view
+- After completion, the task can be marked completed and then it will show the next task
+  
 Structure:-
 
  1] Classes:
-  - MainActivity.java : Handles main screen(Login)
+  - MainActivity.java : Handles main screen(Registration and Login)
   - TasksActivity.java : Creation of tasks
   - TasksListActivity.java : Displays list of tasks
   - Task.java : Model class
