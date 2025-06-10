@@ -1,5 +1,3 @@
-A Simple Task Manager App created in Android Studio (Java)
-
 Working:-
 - New users can register and then login to the app
 - The tasks along with their decription and date have to be added
