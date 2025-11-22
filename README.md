@@ -1,6 +1,6 @@
 Working:-
 - New users can register and then login to the app
-- The tasks along with their decription and date have to be added
+- The tasks along with their description and date have to be added
 - These tasks will be sorted based on date and displayed as a list view
 - After completion, the task can be marked completed and then it will show the next task
   
